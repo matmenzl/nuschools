@@ -1,16 +1,18 @@
 var express = require("express");
+var mongoose = require("./db/connection");
 var app     = express();
+
+var Groups    = mongoose.model("Groups");
+
 
 app.use("/", express.static("public"));
 app.use("/", express.static("bower_components"));
 
 app.get("/api/groups", function(req, res){
-  res.json([
-      {name: "Group1"},
-      {name: "Group2"},
-      {name: "Group3"}
-    ])
-})
+  Groups.find().then(function(groups){
+    res.json(groups);
+  })
+});
 
 
 app.get("/*", function(req,res){
