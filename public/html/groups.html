@@ -1,0 +1,7 @@
+<h2>{{gIndexVM.groups.length}} Groups:</h2>
+
+<ul>
+  <li data-ng-repeat="groups in gIndexVM.groups">
+    <a data-ui-sref="groupShow(groups)">{{groups.name}}</a>
+  </li>
+</ul>

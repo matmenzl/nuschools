@@ -4,23 +4,57 @@
 
 angular
   .module("nuschools", ['ui.router'])
-  .config(Router);
+  .config(Router)
+  .controller("groupsIndexController", groupsIndexCtrl)
+  .controller("groupShowController", groupShowCtrl);
 
   Router.$inject = ["$stateProvider", "$locationProvider", "$urlRouterProvider"];
   function Router($stateProvider, $locationProvider, $urlRouterProvider){
     $locationProvider.html5Mode(true)
     $stateProvider
-      .state("main", {
-        url: "/",
-        template: "<h2>Main</h2>"
+      .state("groupsIndex", {
+        url:          "/",
+        templateUrl:  "/html/groups.html",
+        controller:   "groupsIndexController",
+        controllerAs: "gIndexVM"
       })
-      .state("test", {
-        url: "/test",
-        template: "<h2>Test</h2>"
+      .state("groupShow", {
+        url: "/groups/:name",
+        templateUrl: "/html/group.html",
+        controller: "groupShowController",
+        controllerAs: "gShowVM"
       });
-  }
+      $urlRouterProvider.otherwise("/");
+    }
 
-urlRouterProvider.otherwise("/");
+    function groupsIndexCtrl(){
+      var vm      = this;
+      vm.groups   = [
+        {name: "Group1"},
+        {name: "Group2"},
+        {name: "Group3"}
+      ];
+    }
+
+    groupShowCtrl.$inject = ['$stateParams']
+    function groupShowCtrl($stateParams){
+      var vm        = this;
+      vm.group      = $stateParams;
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 })();
