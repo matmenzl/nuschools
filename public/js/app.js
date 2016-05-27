@@ -3,8 +3,9 @@
 (function(){
 
 angular
-  .module("nuschools", ['ui.router'])
+  .module("nuschools", ['ui.router', 'ngResource'])
   .config(Router)
+  .factory("Group", groupFactory)
   .controller("groupsIndexController", groupsIndexCtrl)
   .controller("groupShowController", groupShowCtrl);
 
@@ -27,13 +28,16 @@ angular
       $urlRouterProvider.otherwise("/");
     }
 
-    function groupsIndexCtrl(){
+    groupFactory.$inject = ['$resource'];
+    function groupFactory($resource){
+      var Group = $resource("/api/groups");
+      return Group;
+    }
+
+    groupsIndexCtrl.$inject = ["Group"];
+    function groupsIndexCtrl(Group){
       var vm      = this;
-      vm.groups   = [
-        {name: "Group1"},
-        {name: "Group2"},
-        {name: "Group3"}
-      ];
+      vm.groups   = Group.query();
     }
 
     groupShowCtrl.$inject = ['$stateParams']

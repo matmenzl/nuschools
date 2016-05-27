@@ -4,6 +4,14 @@ var app     = express();
 app.use("/", express.static("public"));
 app.use("/", express.static("bower_components"));
 
+app.get("/api/groups", function(req, res){
+  res.json([
+      {name: "Group1"},
+      {name: "Group2"},
+      {name: "Group3"}
+    ])
+})
+
 
 app.get("/*", function(req,res){
   res.sendFile(__dirname + "/public/index.html");
