@@ -21,6 +21,12 @@ app.get("/api/groups/:name", function(req, res){
   })
 })
 
+app.patch("/api/groups/:name", function(req, res){
+  Group.findOneAndUpdate(req.params, req.body, { new:true }).then(function(group){
+    res.json(group);
+  })
+})
+
 app.delete("/api/groups/:name", function(req, res){
   Group.findOneAndRemove(req.params).then(function(){
     res.json({success:true});

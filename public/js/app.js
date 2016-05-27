@@ -30,7 +30,7 @@ angular
 
     groupFactory.$inject = ['$resource'];
     function groupFactory($resource){
-      var Group = $resource("/api/groups/:name");
+      var Group = $resource("/api/groups/:name", {}, { update: {method: "PATCH"}});
       return Group;
     }
 
@@ -54,8 +54,13 @@ angular
       vm.delete     = function(){
         Group.remove($stateParams, function(){
           $state.go("groupsIndex");
-      });
-     }
+        });
+      }  
+      vm.update     = function(){
+        Group.update($stateParams, vm.group, function(response){
+          $state.go("groupShow", response);
+        })
+      }
     }
 
 

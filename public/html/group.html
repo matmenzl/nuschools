@@ -1,5 +1,7 @@
 <div data-ng-if="gShowVM.group.name">
 <h2>Group {{gShowVM.group.name}}</h2>
+<input type="text" data-ng-model="gShowVM.group.name">
+<button type="button" data-ng-click="gShowVM.update()">Update</button>
 <button type="button" data-ng-click="gShowVM.delete()">Delete</button>
 </div>
 <div data-ng-if="!gShowVM.group.name">
