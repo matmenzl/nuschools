@@ -1,10 +1,10 @@
 var mongoose = require("./connection.js");
 var seedData = require("./seeds");
 
-var Groups = mongoose.model("Groups");
+var Group = mongoose.model("Group");
 
-Groups.remove().then(function(){
-  Groups.create(seedData).then(function(){
+Group.remove().then(function(){
+  Group.create(seedData).then(function(){
     process.exit();
   }); 
 });

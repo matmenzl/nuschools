@@ -38,13 +38,18 @@ angular
     function groupsIndexCtrl(Group){
       var vm      = this;
       vm.groups   = Group.query();
-    }
+      vm.create   = function(){
+        Group.save(vm.newGroup, function(response){
+          vm.groups.push(response);
+          vm.newGroup = null;
+          });
+        }
+      }
 
     groupShowCtrl.$inject = ['$stateParams']
     function groupShowCtrl($stateParams){
       var vm        = this;
       vm.group      = $stateParams;
-
     }
 
 

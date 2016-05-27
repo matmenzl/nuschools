@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var GroupsSchema = {
+var GroupSchema = {
   name: String,
   description: String,
   students: String,
@@ -11,7 +11,7 @@ var GroupsSchema = {
 
 
 
-mongoose.model("Groups", GroupsSchema);
+mongoose.model("Group", GroupSchema);
 
 mongoose.connect("mongodb://localhost/nuschools");
 
