@@ -1,1 +1,8 @@
+<div data-ng-if="gShowVM.group.name">
 <h2>Group {{gShowVM.group.name}}</h2>
+<button type="button" data-ng-click="gShowVM.delete()">Delete</button>
+</div>
+<div data-ng-if="!gShowVM.group.name">
+<h2>This Group does not exist</h2>
+</div>
+

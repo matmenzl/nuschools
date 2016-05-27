@@ -15,6 +15,18 @@ app.get("/api/groups", function(req, res){
   })
 });
 
+app.get("/api/groups/:name", function(req, res){
+  Group.findOne(req.params).then(function(group){
+    res.json(group);
+  })
+})
+
+app.delete("/api/groups/:name", function(req, res){
+  Group.findOneAndRemove(req.params).then(function(){
+    res.json({success:true});
+  })
+})
+
 app.post("/api/groups", function(req, res){
   Group.create(req.body).then(function(group){
     res.json(group);

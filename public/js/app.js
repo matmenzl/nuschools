@@ -30,7 +30,7 @@ angular
 
     groupFactory.$inject = ['$resource'];
     function groupFactory($resource){
-      var Group = $resource("/api/groups");
+      var Group = $resource("/api/groups/:name");
       return Group;
     }
 
@@ -46,10 +46,16 @@ angular
         }
       }
 
-    groupShowCtrl.$inject = ['$stateParams']
-    function groupShowCtrl($stateParams){
+    groupShowCtrl.$inject = ['$stateParams', 'Group', '$state']
+    function groupShowCtrl($stateParams, Group, $state){
       var vm        = this;
-      vm.group      = $stateParams;
+      vm.group      = Group.get($stateParams, function(response){
+      });
+      vm.delete     = function(){
+        Group.remove($stateParams, function(){
+          $state.go("groupsIndex");
+      });
+     }
     }
 
 
