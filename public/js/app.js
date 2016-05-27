@@ -9,6 +9,8 @@ angular
   .controller("groupsIndexController", groupsIndexCtrl)
   .controller("groupShowController", groupShowCtrl);
 
+
+
   Router.$inject = ["$stateProvider", "$locationProvider", "$urlRouterProvider"];
   function Router($stateProvider, $locationProvider, $urlRouterProvider){
     $locationProvider.html5Mode(true)
