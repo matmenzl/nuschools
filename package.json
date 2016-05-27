@@ -1,0 +1,22 @@
+{
+  "name": "nuschools",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matmenzl/nuschools.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matmenzl/nuschools/issues"
+  },
+  "homepage": "https://github.com/matmenzl/nuschools#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
